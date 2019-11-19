@@ -1,0 +1,20 @@
+(ARCTools Version 2.1.2)
+ HexLoc     DecLoc    MachWord   Label        Instruction                Comment
+                                              .org 2048                  
+                                              .equ 10                    ! marco como constante el número 10
+                                              .equ 100                   ! marco como constante el numero 100
+00000800  0000002048  8280200a                addcc %r0, 10, %r1         ! inserto en registro r1, la constante s
+00000804  0000002052  84802064                addcc %r0, 100, %r2        ! inserto en registro r2, la constante r
+00000808  0000002056  40000002                call 2                     
+0000080c  0000002060  9081c000                addcc %r7, %r0, %r8        
+                                                                         
+                                                                         !subrutina que carga los parámetros ubicados en r1 y r2
+                                                                         !luego suma los numeros y los guarda en el registro r7
+00000810  0000002064  8e804002  sumaDosNum:   addcc %r1, %r2, %r7        
+00000814  0000002068  81c3e004                jmpl %r15, 4, %r0          
+00000818  0000002072  81c3e004                jmpl %r15, 4, %r0          
+
+--- Symbol Table ---
+sumaDosNum: 2064
+s: 100
+r: 10
